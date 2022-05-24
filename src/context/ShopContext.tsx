@@ -5,6 +5,8 @@ type SortType = "id" | "lowprice" | "highprice" | "rating";
 
 type ShopContextValues = {
   items: Product[];
+  wishlist: Product[];
+  setWishlist(wishlist: Product[]): void;
   setSortType(sortType: SortType): void;
   sortType: SortType;
 };
@@ -31,6 +33,7 @@ type Product = {
 export function ShopProvider({ children }: any) {
   const [items, setItems] = useState<Product[]>([]);
   const [sortType, setSortType] = useState<SortType>("id");
+  const [wishlist, setWishlist] = useState<Product[]>([]);
 
   useEffect(() => {
     fetchAllItems();
@@ -59,7 +62,7 @@ export function ShopProvider({ children }: any) {
     sorted = [...items].sort((a, b) => get(b, sortProperty) - get(a, sortProperty));
   }
 
-  const value = { items: sorted, setSortType, sortType };
+  const value = { items: sorted, wishlist, setWishlist, setSortType, sortType };
 
   return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>;
 }

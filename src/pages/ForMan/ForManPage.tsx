@@ -8,26 +8,19 @@ export const ForManPage = () => {
   const { items } = useShopContext();
 
   return (
-    <Flex flexDir="column" backgroundColor="#f7f9fa">
-      <>
-        <Sorting />
-
-        {console.log(items)}
-
-        <Grid templateColumns="repeat(4,1fr)" px="5">
-          {items.map(({ category, title, id, price, description, image}) => {
-            if (category === "men's clothing") {
-              return (
-                <GridItem key={title}>
-                  <Link to={`/forman/${id}`}>
-                    <ItemCard title={title} price={price} description={description} image={image} />
-                  </Link>
-                </GridItem>
-              );
-            }
-          })}
-        </Grid>
-      </>
+    <Flex flexDir="column" mx="20">
+      <Sorting />
+      <Grid templateColumns="repeat(4,1fr)" px="5">
+        {items.map((item) => {
+          if (item.category === "men's clothing") {
+            return (
+              <GridItem key={item.title}>
+                <ItemCard item={item} />
+              </GridItem>
+            );
+          }
+        })}
+      </Grid>
     </Flex>
   );
 };
