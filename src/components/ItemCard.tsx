@@ -16,13 +16,10 @@ export const ItemCard = ({ item }: any) => {
   const handleClick = () => {
     if (wishlist.includes(item)) {
       const newArray = wishlist.filter((wishlistItem) => wishlistItem !== item);
-      console.log("henlo:", newArray);
       setWishlist(newArray);
     } else {
       setWishlist([...wishlist, item]);
-      console.log(wishlist);
     }
-    console.log(item);
   };
 
   return (

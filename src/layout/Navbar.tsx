@@ -36,9 +36,11 @@ export function Navbar() {
               <Box position="relative" mr="5px">
                 <IoHeartOutline size="1.4em" width="" />
                 <Flex position="absolute" top="-2" right="-1">
-                  <Badge backgroundColor="#dd3575" color="white" borderRadius="25px">
-                    {wishlist.length}
-                  </Badge>
+                  {!!wishlist.length && (
+                    <Badge backgroundColor="#dd3575" color="white" borderRadius="25px" fontWeight="normal">
+                      {wishlist.length}
+                    </Badge>
+                  )}
                 </Flex>
               </Box>
             </Box>
