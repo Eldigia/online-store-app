@@ -14,12 +14,11 @@ export const ItemCard = ({ item }: any) => {
   });
 
   const handleClick = () => {
-    if (wishlist.includes(item)) {
-      const newArray = wishlist.filter((wishlistItem) => wishlistItem !== item);
-      setWishlist(newArray);
-    } else {
-      setWishlist([...wishlist, item]);
+    if (!wishlist.includes(item)) {
+      return setWishlist([...wishlist, item]);
     }
+    const newArray = wishlist.filter((wishlistItem) => wishlistItem.id !== item.id);
+    return setWishlist(newArray);
   };
 
   return (

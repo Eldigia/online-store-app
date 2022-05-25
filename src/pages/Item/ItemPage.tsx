@@ -43,12 +43,11 @@ export const ItemPage = () => {
   }
 
   const handleClick = () => {
-    if (wishlist.includes(targetItem)) {
-      const newArray = wishlist.filter((wishlistItem) => wishlistItem !== targetItem);
-      setWishlist(newArray);
-    } else {
-      setWishlist([...wishlist, targetItem]);
+    if (!wishlist.includes(targetItem)) {
+      return setWishlist([...wishlist, targetItem]);
     }
+    const newArray = wishlist.filter((wishlistItem) => wishlistItem.id !== targetItem.id);
+    return setWishlist(newArray);
   };
 
   return (
