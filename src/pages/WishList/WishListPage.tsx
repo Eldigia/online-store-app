@@ -6,13 +6,13 @@ export const WishListPage = () => {
   const { wishlist } = useShopContext();
 
   return (
-    <>
-      <Flex flexDir="column">
-        <Flex mx="120px">
-          <Text mt="15px" fontWeight="bold" fontSize="3xl" w="100%">
-            Wish list
-          </Text>
-        </Flex>
+    <Flex flexDir="column">
+      <Flex mx="120px">
+        <Text mt="15px" fontWeight="bold" fontSize="3xl" w="100%">
+          Wish list
+        </Text>
+      </Flex>
+      {!!wishlist.length ? (
         <Flex flexDir="column" mx="20">
           <Grid templateColumns="repeat(4,1fr)" px="5">
             {wishlist.map((item) => {
@@ -24,7 +24,11 @@ export const WishListPage = () => {
             })}
           </Grid>
         </Flex>
-      </Flex>
-    </>
+      ) : (
+        <Flex mx="120px" mt="15px">
+          <Text>There are no favorite products</Text>
+        </Flex>
+      )}
+    </Flex>
   );
 };
