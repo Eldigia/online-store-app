@@ -1,23 +1,33 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { get } from "lodash";
 
-type SortType = "id" | "lowprice" | "highprice" | "rating";
+export type SortType = "id" | "lowprice" | "highprice" | "rating";
 
 type ShopContextValues = {
   items: Product[];
   wishlist: Product[];
+  itemCart: Product[];
   setWishlist(wishlist: Product[]): void;
+  setItemCart(iteamCart: Product[]): void;
   setSortType(sortType: SortType): void;
   sortType: SortType;
 };
 
-const ShopContext = createContext<ShopContextValues>({});
+const ShopContext = createContext<ShopContextValues>({
+  items: [],
+  wishlist: [],
+  itemCart: [],
+  setWishlist() {},
+  setItemCart() {},
+  setSortType() {},
+  sortType: "id",
+});
 
 export function useShopContext() {
   return useContext(ShopContext);
 }
 
-type Product = {
+export type Product = {
   id: number;
   title: string;
   price: number;
@@ -34,6 +44,7 @@ export function ShopProvider({ children }: any) {
   const [items, setItems] = useState<Product[]>([]);
   const [sortType, setSortType] = useState<SortType>("id");
   const [wishlist, setWishlist] = useState<Product[]>([]);
+  const [itemCart, setItemCart] = useState<Product[]>([]);
 
   useEffect(() => {
     fetchAllItems();
@@ -62,7 +73,7 @@ export function ShopProvider({ children }: any) {
     sorted = [...items].sort((a, b) => get(b, sortProperty) - get(a, sortProperty));
   }
 
-  const value = { items: sorted, wishlist, setWishlist, setSortType, sortType };
+  const value = { items: sorted, wishlist, setWishlist, itemCart, setItemCart, setSortType, sortType };
 
   return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>;
 }

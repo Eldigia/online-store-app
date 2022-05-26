@@ -1,13 +1,18 @@
 import { Collapse, Flex, Text, useDisclosure } from "@chakra-ui/react";
 import { BiSortAlt2 } from "react-icons/bi";
 import { Button } from "../components/Button";
-import { useShopContext } from "../context/ShopContext";
+import { SortType, useShopContext } from "../context/ShopContext";
 
 export const Sorting = () => {
   const { isOpen, onToggle } = useDisclosure();
   const { setSortType, sortType } = useShopContext();
 
-  const sortKeys = [
+  type SortKeys = {
+    name: string;
+    sort: SortType;
+  }[];
+
+  const sortKeys: SortKeys = [
     { name: "Newest", sort: "id" },
     { name: "Lowest Price", sort: "lowprice" },
     { name: "Highest Price", sort: "highprice" },
@@ -29,8 +34,8 @@ export const Sorting = () => {
                 boxShadow="base"
                 mx="5"
                 value={sort}
-                onClick={(e) => {
-                  setSortType(e.target.value);
+                onClick={() => {
+                  setSortType(sort);
                 }}
               >
                 {name}

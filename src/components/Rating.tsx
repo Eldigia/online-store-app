@@ -1,7 +1,12 @@
 import { Flex, Text } from "@chakra-ui/react";
 import { HiOutlineStar, HiStar } from "react-icons/hi";
+import { Product } from "../context/ShopContext";
 
-export const Rating = ({ rating }) => {
+type Props = {
+  rating: Product["rating"];
+};
+
+export const Rating = ({ rating }: Props) => {
   const totalStars = 5;
   const activeStars = Math.round(rating.rate);
 
