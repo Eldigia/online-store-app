@@ -14,7 +14,7 @@ export const Rating = ({ rating }: Props) => {
     <Flex flexDir="row">
       <Flex>
         {[...new Array(totalStars)].map((arr, index) => {
-          return index < activeStars ? <HiStar size="1.4em" /> : <HiOutlineStar size="1.4em" />;
+          return index < activeStars ? <HiStar key={index} size="1.4em" /> : <HiOutlineStar key={index} size="1.4em" />;
         })}
       </Flex>
       <Flex ml="3">

@@ -7,7 +7,7 @@ import { useShopContext } from "../../context/ShopContext";
 import { Rating } from "../../components/Rating";
 
 export const ItemPage = () => {
-  const { items, wishlist, setWishlist } = useShopContext();
+  const { items, wishlist, setWishlist, cartItems, setCartItems } = useShopContext();
   const { isOpen, onToggle } = useDisclosure();
   const params = useParams();
 
@@ -42,7 +42,17 @@ export const ItemPage = () => {
     }
   }
 
-  const handleClick = () => {
+  const handleAddToCart = () => {
+    const targetItemIndex = cartItems.findIndex((item) => item.id === targetItem.id);
+    if (targetItemIndex !== -1) {
+      const newCartItems = [...cartItems];
+      newCartItems[targetItemIndex].quantity += 1;
+      return setCartItems(newCartItems);
+    }
+    setCartItems([...cartItems, { id: targetItem.id, quantity: 1 }]);
+  };
+
+  const handleAddToWishList = () => {
     if (!wishlist.includes(targetItem)) {
       return setWishlist([...wishlist, targetItem]);
     }
@@ -67,10 +77,10 @@ export const ItemPage = () => {
           {formatter.format(targetItem.price)}
         </Text>
         <Flex flexDir="row" mb="10">
-          <Button variant="pink" mr="2">
+          <Button variant="pink" mr="2" onClick={handleAddToCart}>
             Add to Cart
           </Button>
-          <Button variant="white" onClick={handleClick}>
+          <Button variant="white" onClick={handleAddToWishList}>
             {wishlist.includes(targetItem) ? (
               <Flex>
                 <IoHeart size="1.4rem" color="#dd3575" />

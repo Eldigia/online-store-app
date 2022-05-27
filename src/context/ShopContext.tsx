@@ -6,9 +6,9 @@ export type SortType = "id" | "lowprice" | "highprice" | "rating";
 type ShopContextValues = {
   items: Product[];
   wishlist: Product[];
-  itemCart: Product[];
+  cartItems: MappedCartItem[];
   setWishlist(wishlist: Product[]): void;
-  setItemCart(iteamCart: Product[]): void;
+  setCartItems(iteamCart: CartItem[]): void;
   setSortType(sortType: SortType): void;
   sortType: SortType;
 };
@@ -16,9 +16,9 @@ type ShopContextValues = {
 const ShopContext = createContext<ShopContextValues>({
   items: [],
   wishlist: [],
-  itemCart: [],
+  cartItems: [],
   setWishlist() {},
-  setItemCart() {},
+  setCartItems() {},
   setSortType() {},
   sortType: "id",
 });
@@ -40,11 +40,25 @@ export type Product = {
   };
 };
 
+export type CartItem = {
+  id: Product["id"];
+  quantity: number;
+};
+
+export type MappedCartItem = {
+  item: Product;
+} & CartItem;
+
 export function ShopProvider({ children }: any) {
   const [items, setItems] = useState<Product[]>([]);
   const [sortType, setSortType] = useState<SortType>("id");
   const [wishlist, setWishlist] = useState<Product[]>([]);
-  const [itemCart, setItemCart] = useState<Product[]>([]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+  const mappedCartItems = cartItems.map((cartItem) => ({
+    ...cartItem,
+    item: items.find(({ id }) => id === cartItem.id)!,
+  }));
 
   useEffect(() => {
     fetchAllItems();
@@ -73,7 +87,15 @@ export function ShopProvider({ children }: any) {
     sorted = [...items].sort((a, b) => get(b, sortProperty) - get(a, sortProperty));
   }
 
-  const value = { items: sorted, wishlist, setWishlist, itemCart, setItemCart, setSortType, sortType };
+  const value = {
+    items: sorted,
+    wishlist,
+    setWishlist,
+    setCartItems,
+    setSortType,
+    sortType,
+    cartItems: mappedCartItems,
+  };
 
   return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>;
 }

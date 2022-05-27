@@ -34,6 +34,7 @@ export const Sorting = () => {
                 boxShadow="base"
                 mx="5"
                 value={sort}
+                key={name}
                 onClick={() => {
                   setSortType(sort);
                 }}
