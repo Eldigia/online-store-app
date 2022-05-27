@@ -3,7 +3,7 @@ import { Baner } from "../../layout/Baner";
 
 export const HomePage = () => {
   return (
-    <Flex flexDir="column">
+    <Flex flexDir="column" mx="20">
       <Baner />
     </Flex>
   );

@@ -3,8 +3,8 @@ import imgBanner from "../public/girl-shop.jpeg";
 
 export const Baner = () => {
   return (
-    <Flex h="400px">
-      <Flex flexDir="column" alignContent="center" ml="200px" mt="100px">
+    <Flex h="400px" mt="5">
+      <Flex flexDir="column" alignContent="center" ml="100px" mt="100px">
         <Flex>
           <Box fontSize="5xl">New Collection</Box>
         </Flex>
