@@ -5,6 +5,17 @@ import { useShopContext } from "../../context/ShopContext";
 export const WishListPage = () => {
   const { wishlist } = useShopContext();
 
+  function getCategoryName(category: string) {
+    if (category === "women's clothing") {
+      return "forwomen";
+    }
+    if (category === "men's clothing") {
+      return "formen";
+    } else {
+      return "accesories";
+    }
+  }
+
   return (
     <Flex flexDir="column">
       <Flex mx="120px">
@@ -18,7 +29,7 @@ export const WishListPage = () => {
             {wishlist.map((item) => {
               return (
                 <GridItem key={item.title}>
-                  <ItemCard item={item} />
+                  <ItemCard item={item} category={getCategoryName(item.category)} />
                 </GridItem>
               );
             })}
