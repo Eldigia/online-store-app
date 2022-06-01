@@ -21,11 +21,11 @@ export function Navbar() {
     <Flex w="100%" flexDir="column" backgroundColor="#FFFFFF">
       <Flex h="80px" justifyContent="space-between" mx="120px" alignContent="center">
         <Flex my="auto" fontSize="18px">
-          <NavLink to="/forwoman">
-            <Text mr="10px">For Woman</Text>
+          <NavLink to="/forwomen">
+            <Text mr="10px">For Women</Text>
           </NavLink>
-          <NavLink to="/forman">
-            <Text mx="10px">For Man</Text>
+          <NavLink to="/formen">
+            <Text mx="10px">For Men</Text>
           </NavLink>
           <NavLink to="/accesories">
             <Text mx="10px">Accesories</Text>

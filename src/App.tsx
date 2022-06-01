@@ -6,8 +6,8 @@ import { AccesoriesPage } from "./pages/Accesories/AccesoriesPage";
 
 import { CartPage } from "./pages/Cart/CartPage";
 import { ClientAccPage } from "./pages/Client/ClientAccPage";
-import { ForManPage } from "./pages/ForMan/ForManPage";
-import { ForWomanPage } from "./pages/ForWoman/ForWomanPage";
+import { ForMenPage } from "./pages/ForMen/ForMenPage";
+import { ForWomenPage } from "./pages/ForWomen/ForWomenPage";
 import { HomePage } from "./pages/Home/HomePage";
 import { ItemPage } from "./pages/Item/ItemPage";
 import { WishListPage } from "./pages/WishList/WishListPage";
@@ -22,11 +22,11 @@ function App() {
           <Routes>
             <Route index element={<HomePage />} />
 
-            <Route element={<ForWomanPage />} path="/forwoman" />
+            <Route element={<ForWomenPage />} path="/forwomen" />
 
             <Route element={<ItemPage />} path="/:category/:itemId" />
 
-            <Route element={<ForManPage />} path="/forman" />
+            <Route element={<ForMenPage />} path="/formen" />
 
             <Route element={<AccesoriesPage />} path="/accesories" />
 

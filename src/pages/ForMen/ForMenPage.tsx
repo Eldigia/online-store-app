@@ -1,9 +1,10 @@
 import { Flex, Grid, GridItem } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import { ItemCard } from "../../components/ItemCard";
 import { useShopContext } from "../../context/ShopContext";
 import { Sorting } from "../../layout/Sorting";
 
-export const ForWomanPage = () => {
+export const ForMenPage = () => {
   const { items } = useShopContext();
 
   return (
@@ -11,10 +12,10 @@ export const ForWomanPage = () => {
       <Sorting />
       <Grid templateColumns="repeat(4,1fr)" px="5">
         {items.map((item) => {
-          if (item.category === "women's clothing") {
+          if (item.category === "men's clothing") {
             return (
               <GridItem key={item.title}>
-                <ItemCard item={item} />
+                <ItemCard item={item} category="formen" />
               </GridItem>
             );
           }

@@ -31,11 +31,11 @@ export const ItemPage = () => {
   }
 
   function getPreviousPageName() {
-    if (location === "forwoman") {
-      return "Woman";
+    if (location === "forwomen") {
+      return "Women";
     }
-    if (location === "forman") {
-      return "Man";
+    if (location === "formen") {
+      return "Men";
     }
     if (location === "accesories") {
       return "Accesories";

@@ -14,7 +14,7 @@ export const AccesoriesPage = () => {
           if (item.category !== "men's clothing" && item.category !== "women's clothing") {
             return (
               <GridItem key={item.title}>
-                <ItemCard item={item} />
+                <ItemCard item={item} category="accesories" />
               </GridItem>
             );
           }
