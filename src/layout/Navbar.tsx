@@ -1,4 +1,4 @@
-import { Box, Divider, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Divider, Flex, Grid, GridItem, Image, Text } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
 import { BiUser } from "react-icons/bi";
 import { BsCart3 } from "react-icons/bs";
@@ -18,9 +18,9 @@ export function Navbar() {
   });
 
   return (
-    <Flex w="100%" flexDir="column" backgroundColor="#FFFFFF">
-      <Flex h="80px" justifyContent="space-between" mx="120px" alignContent="center">
-        <Flex my="auto" fontSize="18px">
+    <Flex flexDir="column">
+      <Grid templateColumns="repeat(3, 1fr)" mx="120">
+        <GridItem fontSize="18px" my="auto" display="inline-flex" whiteSpace="nowrap">
           <NavLink to="/forwomen">
             <Text mr="10px">For Women</Text>
           </NavLink>
@@ -30,14 +30,14 @@ export function Navbar() {
           <NavLink to="/accesories">
             <Text mx="10px">Accesories</Text>
           </NavLink>
-        </Flex>
-        <Flex my="auto">
+        </GridItem>
+        <GridItem mx="auto">
           <NavLink to="/">
             <Image boxSize="80px" src={imgNavbar} />
           </NavLink>
-        </Flex>
+        </GridItem>
 
-        <Flex my="auto" fontSize="18px">
+        <GridItem my="auto" fontSize="18px" ml="auto">
           <NavLink to="/wishlist">
             <Box display="inline-flex" mx="10px" alignItems="center" position="relative" mr="10px">
               <IoHeartOutline size="1.4em" width="" />
@@ -58,8 +58,8 @@ export function Navbar() {
               <Text>Account</Text>
             </Box>
           </NavLink>
-        </Flex>
-      </Flex>
+        </GridItem>
+      </Grid>
       <Divider />
     </Flex>
   );
