@@ -1,4 +1,5 @@
 import { Divider, Flex, Text, useDisclosure } from "@chakra-ui/react";
+import { signOut } from "firebase/auth";
 import { BiUser } from "react-icons/bi";
 import { HiOutlineLockClosed } from "react-icons/hi";
 import { IoLogOutOutline, IoMailOutline } from "react-icons/io5";
@@ -6,14 +7,15 @@ import { Button } from "../../components/Button";
 import { LogIn } from "../../components/LogIn";
 import { UpdateUserModal } from "../../components/UpdateUserModal";
 import { useShopContext } from "../../context/ShopContext";
+import { auth } from "../../firebase-config";
 
 export const ClientAccPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { user, setUser } = useShopContext();
 
-  function handleLogOut() {
-    setUser(null);
-  }
+  const logout = () => {
+    signOut(auth);
+  };
 
   return (
     <>
@@ -23,7 +25,7 @@ export const ClientAccPage = () => {
             <Text my="15px" fontWeight="bold" fontSize="3xl" w="100%">
               Hello, {user.displayName}
             </Text>
-            <Button variant="white" my="15px" pr="0" justifyContent="flex-end" onClick={handleLogOut}>
+            <Button variant="white" my="15px" pr="0" justifyContent="flex-end" onClick={logout}>
               <IoLogOutOutline size="2rem" />
               <Text>Log Out</Text>
             </Button>
