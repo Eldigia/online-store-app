@@ -15,7 +15,7 @@ import { useShopContext } from "../context/ShopContext";
 import { Button } from "./Button";
 import { Input } from "./Input";
 
-export interface IFormValues {
+export interface UpdateUserFormValues {
   name: string;
   email: string;
 }
@@ -26,9 +26,9 @@ export const UpdateUserModal = ({ isOpen, onClose }: Omit<ModalProps, "children"
   const {
     formState: { errors },
     handleSubmit,
-  } = useForm<IFormValues>();
+  } = useForm<UpdateUserFormValues>();
 
-  const onSubmit: SubmitHandler<IFormValues> = (user) => {
+  const onSubmit: SubmitHandler<UpdateUserFormValues> = (user) => {
     console.log(user);
   };
 

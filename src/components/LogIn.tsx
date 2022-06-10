@@ -1,25 +1,28 @@
 import { Divider, Flex, Text, useDisclosure } from "@chakra-ui/react";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useShopContext } from "../context/ShopContext";
 import { Button } from "./Button";
 import { Input } from "./Input";
 import { SignInModal } from "./SignInModal";
 
-export interface IFormValues {
+export interface LogInFormValues {
   email: string;
   password: string;
 }
 
 export const LogIn = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { logInUser } = useShopContext();
 
   const {
+    register,
     formState: { errors },
     handleSubmit,
-  } = useForm<IFormValues>();
+  } = useForm<LogInFormValues>();
 
-  const onSubmit: SubmitHandler<IFormValues> = (user) => {
-    console.log(user);
+  const onSubmit: SubmitHandler<LogInFormValues> = ({ email, password }) => {
+    logInUser({ email, password });
   };
 
   return (
@@ -29,8 +32,22 @@ export const LogIn = () => {
           Log in
         </Text>
         <Flex flexDir="row" alignItems="center" display="unset">
-          <Input placeholder="E-mail address" />
-          <Input placeholder="Password" />
+          <Input
+            placeholder="E-mail address"
+            type="email"
+            {...register("email", {
+              required: "Email is required",
+              pattern: { value: /^\S+@\S+$/i, message: "Invalid email address." },
+            })}
+          />
+          <Input
+            placeholder="Password"
+            type="password"
+            {...register("password", {
+              required: "Password is required",
+              minLength: { value: 4, message: "Minimum length should be 4" },
+            })}
+          />
           <Button type="submit" mt="10" variant="pink" w="100%">
             Log in
           </Button>

@@ -1,8 +1,15 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { get } from "lodash";
-import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile, User } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  updateProfile,
+  User,
+} from "firebase/auth";
 import { auth } from "../firebase-config";
 import { IFormValues } from "../components/SignInModal";
+import { LogInFormValues } from "../components/LogIn";
 
 export type SortType = "id" | "lowprice" | "highprice" | "rating";
 
@@ -15,6 +22,7 @@ type ShopContextValues = {
   setSortType(sortType: SortType): void;
   sortType: SortType;
   registerUser(user: IFormValues): Promise<void>;
+  logInUser(user: LogInFormValues): Promise<void>;
   user: User | null;
   setUser(user: User | null): void;
 };
@@ -28,6 +36,7 @@ const ShopContext = createContext<ShopContextValues>({
   setSortType() {},
   sortType: "id",
   async registerUser() {},
+  async logInUser() {},
   user: null,
   setUser() {},
 });
@@ -108,6 +117,15 @@ export function ShopProvider({ children }: any) {
     }
   };
 
+  const logInUser = async ({ email, password }: LogInFormValues) => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (error: any) {
+      console.error(error);
+      alert(error.message);
+    }
+  };
+
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -123,6 +141,7 @@ export function ShopProvider({ children }: any) {
     sortType,
     cartItems: mappedCartItems,
     registerUser,
+    logInUser,
     user,
     setUser,
   };
