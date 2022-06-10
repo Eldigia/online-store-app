@@ -16,7 +16,7 @@ export const ClientAccPage = () => {
   }
 
   return (
-    <Flex flexDir="column">
+    <>
       {user ? (
         <Flex mx="120px" flexDir="column">
           <Flex>
@@ -63,6 +63,6 @@ export const ClientAccPage = () => {
       ) : (
         <LogIn />
       )}
-    </Flex>
+    </>
   );
 };
