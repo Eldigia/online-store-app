@@ -9,7 +9,7 @@ export const CartPage = () => {
   return (
     <Flex flexDir="column">
       <Flex mx="120px">
-        <Text my="15px" fontWeight="bold" fontSize="3xl" w="100%">
+        <Text mt="15px" fontWeight="bold" fontSize="3xl" w="100%">
           Shopping Cart
         </Text>
       </Flex>
