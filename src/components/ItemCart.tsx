@@ -36,9 +36,9 @@ export const ItemCart = ({ item, quantity }: Props) => {
       <Image fit="contain" w="120px" h="120px" src={image} />
       <Flex flexDir="column" w="50%" mr="10%" justifyContent="space-between">
         <Text>{title}</Text>
-        <Button variant="white" justifyContent="flex-start" onClick={handleDeleteItemFromCart}>
+        <Button variant="white" pl="0" justifyContent="flex-start" onClick={handleDeleteItemFromCart}>
           <IoTrashOutline />
-          Delete
+          <Text pl="2">Delete</Text>
         </Button>
       </Flex>
       <Flex flexDir="column" alignItems="end" justifyContent="space-between">
