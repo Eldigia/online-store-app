@@ -10,7 +10,7 @@ export const ForMenPage = () => {
   return (
     <Flex flexDir="column" mx="20">
       <Sorting />
-      <Grid templateColumns="repeat(4,1fr)" px="5">
+      <Grid templateColumns={{ xl: "repeat(4,1fr)", lg: "repeat(3,1fr)", sm: "repeat(2,1fr)" }} px="5">
         {items.map((item) => {
           if (item.category === "men's clothing") {
             return (

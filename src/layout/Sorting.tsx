@@ -26,7 +26,7 @@ export const Sorting = () => {
         <Text fontSize="16">Sorting</Text>
       </Button>
       <Collapse in={isOpen} animateOpacity>
-        <Flex mt="3" mr="2" p="3" flexDir="row">
+        <Flex mt="3" mr="2" p="3" flexDir={{ base: "column", md: "row" }}>
           {sortKeys.map(({ sort, name }) => {
             return (
               <Button

@@ -13,6 +13,13 @@ const styles = {
   },
 };
 
+const breakpoints = {
+  sm: "780px",
+  md: "924px",
+  lg: "1070px",
+  xl: "1378px",
+};
+
 const components = {
   Button: {
     baseStyle: {
@@ -47,4 +54,4 @@ const components = {
   },
 };
 
-export const theme = extendTheme({ styles, components });
+export const theme = extendTheme({ styles, breakpoints, components });
