@@ -7,25 +7,25 @@ export const CartPage = () => {
   const { cartItems } = useShopContext();
 
   return (
-    <Flex flexDir="column">
-      <Flex mx="120px">
-        <Text mt="15px" fontWeight="bold" fontSize="3xl" w="100%">
+    <Flex mx={{ base: "20px", md: "120px" }} flexDir="column">
+      <Flex>
+        <Text my="15px" fontWeight="bold" fontSize="3xl" w="100%">
           Shopping Cart
         </Text>
       </Flex>
       {!!cartItems.length ? (
-        <Flex mx="120px" mb="10">
-          <Flex w="70%" flexDir="column" boxShadow="base" p="5" mr="8">
+        <Flex mb="10" flexDir={{ base: "column", md: "row" }}>
+          <Flex w={{ base: "100%", md: "70%" }} flexDir="column" boxShadow="base" p="5" mr="8">
             {cartItems.map((cartItem) => {
               return <ItemCart key={cartItem.item.id} item={cartItem.item} quantity={cartItem.quantity} />;
             })}
           </Flex>
-          <Flex w="30%">
+          <Flex mt={{ base: "10", md: "0" }} w={{ base: "100%", md: "30%" }}>
             <CartSummary />
           </Flex>
         </Flex>
       ) : (
-        <Flex mx="120px" mt="15px">
+        <Flex mt="15px">
           <Text>You have no items in your cart</Text>
         </Flex>
       )}

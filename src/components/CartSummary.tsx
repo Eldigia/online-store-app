@@ -47,7 +47,9 @@ export const CartSummary = () => {
           {formatter.format(sum + shippingCost)}
         </Text>
       </Flex>
-      <Button variant="pink">Proceed to checkout</Button>
+      <Button variant="pink" w="100%">
+        Proceed to checkout
+      </Button>
     </Flex>
   );
 };

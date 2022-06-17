@@ -20,7 +20,7 @@ export const ClientAccPage = () => {
   return (
     <>
       {user ? (
-        <Flex mx="120px" flexDir="column">
+        <Flex mx={{ base: "20px", md: "120px" }} flexDir="column">
           <Flex>
             <Text my="15px" fontWeight="bold" fontSize="3xl" w="100%">
               Hello, {user.displayName}

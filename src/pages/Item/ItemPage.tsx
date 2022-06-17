@@ -61,11 +61,11 @@ export const ItemPage = () => {
   };
 
   return (
-    <Flex flexDir="row" h="100%">
-      <Flex w="45%" justifyContent="center" ml="10" my="10">
-        <Image h="550px" src={targetItem.image} />
+    <Flex flexDir={{ base: "column", md: "row" }} h="100%" mx={{ base: "20", md: "120px" }}>
+      <Flex w={{ base: "100%", md: "50%" }} justifyContent="center" my="10">
+        <Image h={{ base: "100%" }} src={targetItem.image} />
       </Flex>
-      <Flex w="50%" flexDir="column" p="10">
+      <Flex w={{ base: "100%", md: "50%" }} flexDir="column" p="10">
         <Link to={`/${location}`}>
           <Text mb="5">{getPreviousPageName()}</Text>
         </Link>

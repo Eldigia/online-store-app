@@ -17,14 +17,14 @@ export const WishListPage = () => {
   }
 
   return (
-    <Flex flexDir="column">
-      <Flex mx="120px">
+    <Flex mx={{ base: "20px", md: "120px" }} flexDir="column">
+      <Flex>
         <Text mt="15px" fontWeight="bold" fontSize="3xl" w="100%">
           Wish list
         </Text>
       </Flex>
       {!!wishlist.length ? (
-        <Flex flexDir="column" mx="20">
+        <Flex flexDir="column">
           <Grid templateColumns={{ xl: "repeat(4,1fr)", lg: "repeat(3,1fr)", sm: "repeat(2,1fr)" }} px="5">
             {wishlist.map((item) => {
               return (

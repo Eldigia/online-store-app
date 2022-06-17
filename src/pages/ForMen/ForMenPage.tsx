@@ -8,7 +8,7 @@ export const ForMenPage = () => {
   const { items } = useShopContext();
 
   return (
-    <Flex flexDir="column" mx="20">
+    <Flex flexDir="column" mx={{ base: "20px", md: "120px" }}>
       <Sorting />
       <Grid templateColumns={{ xl: "repeat(4,1fr)", lg: "repeat(3,1fr)", sm: "repeat(2,1fr)" }} px="5">
         {items.map((item) => {
