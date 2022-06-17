@@ -94,8 +94,8 @@ export const ItemPage = () => {
             )}
           </Button>
         </Flex>
-        <Box onClick={onToggle} w="90%" cursor="pointer">
-          <Divider />
+        <Divider />
+        <Box onClick={onToggle} cursor="pointer">
           <Flex justifyContent="space-between" p="3">
             <Flex>
               <Text fontWeight="bold">Description</Text>
@@ -110,7 +110,7 @@ export const ItemPage = () => {
             {targetItem.description}
           </Flex>
         </Collapse>
-        <Divider w="90%" />
+        <Divider />
       </Flex>
     </Flex>
   );
