@@ -14,3 +14,4 @@ E-commerce store app.
 * ChakraUI
 * React Hook Form
 * Firebase
+* Lodash
