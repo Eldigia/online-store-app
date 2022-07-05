@@ -45,7 +45,7 @@ export const SignInModal = ({ isOpen, onClose }: Omit<ModalProps, "children">) =
           <ModalHeader>Create Account</ModalHeader>
           <ModalCloseButton _focus={{ boxShadow: "none" }} mr="5" mt="5" />
           <ModalBody>
-            <Text>Create you account to track your online orders and enjoy a fast check-out</Text>
+            <Text>Create your account to track your online orders and enjoy a fast check-out</Text>
             <FormControl isInvalid={!!errors.name}>
               <Input
                 placeholder="Name *"
