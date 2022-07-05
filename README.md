@@ -1,3 +1,17 @@
-### Store app
+## Online store app
 
-Live deploy: https://splendid-peony-2fbcf9.netlify.app/
+E-commerce store app.
+
+### Preview
+
+[Live deploy](https://splendid-peony-2fbcf9.netlify.app/)
+
+### Technologies
+
+* React
+* TypeScript
+* Vite
+* ChakraUI
+* React Hook Form
+* Firebase
+* Lodash
