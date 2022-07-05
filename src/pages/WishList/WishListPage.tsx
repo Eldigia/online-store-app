@@ -19,7 +19,7 @@ export const WishListPage = () => {
   return (
     <Flex mx={{ base: "20px", md: "120px" }} flexDir="column">
       <Flex>
-        <Text mt="15px" fontWeight="bold" fontSize="3xl" w="100%">
+        <Text my="15px" fontWeight="bold" fontSize="3xl" w="100%">
           Wish list
         </Text>
       </Flex>
@@ -36,7 +36,7 @@ export const WishListPage = () => {
           </Grid>
         </Flex>
       ) : (
-        <Flex mx="120px" mt="15px">
+        <Flex mt="15px">
           <Text>There are no favorite products</Text>
         </Flex>
       )}
