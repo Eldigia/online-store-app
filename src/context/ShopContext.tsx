@@ -27,19 +27,7 @@ type ShopContextValues = {
   setUser(user: User | null): void;
 };
 
-const ShopContext = createContext<ShopContextValues>({
-  items: [],
-  wishlist: [],
-  cartItems: [],
-  setWishlist() {},
-  setCartItems() {},
-  setSortType() {},
-  sortType: "id",
-  async registerUser() {},
-  async logInUser() {},
-  user: null,
-  setUser() {},
-});
+const ShopContext = createContext<ShopContextValues>({} as ShopContextValues);
 
 export function useShopContext() {
   return useContext(ShopContext);
